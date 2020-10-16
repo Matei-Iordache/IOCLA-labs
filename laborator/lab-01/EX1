@@ -1,0 +1,23 @@
+a.
+    zecimal --> binar --> hexa
+
+    121 --> 0b 0111 1001 --> 0x79
+    18446 --> 0b 0100 1000 0000 1110 --> 0x480E
+
+b.
+    conversie in zecimal
+
+    0b 1100 0101 1101 0010 --> 50642
+    0xBB29 --> 47913
+
+c.
+    conversie din hexa in binar
+
+    0x5E --> 0b 0101 1110
+    0x4A01 --> 0b 0100 1010 0000 0001
+
+d.
+    conversie din binar in hexa
+
+    0b 0111 1101 --> 0x7D
+    0b 1000 1100 0001 1111 --> 0x8C1F
