@@ -5,6 +5,13 @@
 #include <time.h>
 #include "pixel.h"
 
+// swapping the pixels of the matrix
+void swap(Pixel *a, Pixel *b) {
+    Pixel temp = *a; 
+    *a = *b; 
+    *b = temp; 
+}
+
 /*
 	TODO a
 	Functia primeste ca parametru o imagine si intoarce imaginea rasturnata.
@@ -12,8 +19,18 @@
 	din structura lui Picture, astfel: Linia 1 devine linia n, linia 2 devine
 	linia n - 1, etc.
 */
-
-void reversePic(Picture *pic);
+void reversePic(Picture *pic) {
+	
+	for (int i = 0; i < pic->height; i++) {
+		int start = 0; //start of the row
+		int end = pic->width - 1; // end of the row 
+		while (start < end) {
+			swap(&(pic->pix_array[i][start]), &(pic->pix_array[i][end]));
+			start++;
+			end--;
+		}
+	}
+}
 
 /*
 	TODO b
@@ -25,7 +42,15 @@ void reversePic(Picture *pic);
 	p.b = 0.11 * p.b;
 */
 
-void colorToGray(Picture *pic);
+void colorToGray(Picture *pic) {
+	for (int i = 0; i < pic->height; i++) {
+		for (int j = 0; j < pic->width; j++) {
+			pic->pix_array[i][j].R *= 0.3;
+			pic->pix_array[i][j].G *= 0.59;
+			pic->pix_array[i][j].B *= 0.11;
+		}
+	}
+}
 
 /*
 	Structura unui pixel, cea a unei imagini, precum si generarea acestora
@@ -43,6 +68,15 @@ int main() {
 	Pixel **pix_array = generatePixelArray(height, width);
 	Picture *pic = generatePicture(height, width, pix_array);
 
+	printf("Initial Picture:\n");
+	printPicture(pic);
+
+	// printf("Reversed Pic:\n");
+	// reversePic(pic);
+	// printPicture(pic);
+
+	printf("ColorToGray Picture:\n");
+	colorToGray(pic);
 	printPicture(pic);
 
 	freePicture(&pic);

@@ -32,14 +32,14 @@ int main(void)
 	int numbers[] = {1, 13, 2,  5, 3, -7};
 	int i;
 
-	while (1) {
-		shuffle(numbers, 6);
+// goto statement that tries to replace a while (1) loop
+// that is beeing intrerupted by a break
+while_goto:
+	shuffle(numbers, 6);
 
-		if (is_sorted(numbers, 6))
+	if (!is_sorted(numbers, 6))
+		goto while_goto;
 
-			/* TODO use goto instead of break */
-			break;
-	}
 
 	for (i = 0; i < 6; i++)
 		printf("%d ", numbers[i]);

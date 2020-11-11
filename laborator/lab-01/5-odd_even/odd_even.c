@@ -7,7 +7,7 @@ int find_nrbits(int number) {
    	while (number) { 
         count++; 
         number >>= 1; 
-    } 
+    }
     return count; 
 }
 
